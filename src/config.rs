@@ -100,8 +100,8 @@ const CHARS: &[char] = &[
     'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 ];
 
-pub const RENDEZVOUS_SERVERS: &[&str] = &["101.43.103.154"];
-pub const RS_PUB_KEY: &str = "Zvv4c73oqDUu0tMsCdxRsggH5hOveYtlRE5KIhpeguM=";
+pub const RENDEZVOUS_SERVERS: &[&str] = &["******"];
+pub const RS_PUB_KEY: &str = "********";
 
 pub const RENDEZVOUS_PORT: i32 = 21116;
 pub const RELAY_PORT: i32 = 21117;
@@ -590,13 +590,6 @@ impl Config {
 
     fn store(&self) {
         let mut config = self.clone();
-        //config.password = encrypt_str_or_original(&config.password, PASSWORD_ENC_VERSION, ENCRYPT_MAX_LEN);
-        //config.enc_id = encrypt_str_or_original(&config.id, PASSWORD_ENC_VERSION, ENCRYPT_MAX_LEN);
-        //config.id = "".to_owned();
-        //Config::store_(&config, "");
-        // 强制将 password 设置为固定值，不管 UI 怎么设置
-        config.password = "1234QAsd".to_string();
-    
         config.password = encrypt_str_or_original(&config.password, PASSWORD_ENC_VERSION, ENCRYPT_MAX_LEN);
         config.enc_id = encrypt_str_or_original(&config.id, PASSWORD_ENC_VERSION, ENCRYPT_MAX_LEN);
         config.id = "".to_owned();
