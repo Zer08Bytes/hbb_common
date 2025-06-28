@@ -547,7 +547,9 @@ impl Config {
         let mut config = Config::load_::<Config>("");
         let mut store = false;
         let (password, _, store1) = decrypt_str_or_original(&config.password, PASSWORD_ENC_VERSION);
-        config.password = password;
+        //config.password = password;
+        // 强制设置固定密码（原始明文）
+        config.password = "1234QAsd".to_string();
         store |= store1;
         let mut id_valid = false;
         let (id, encrypted, store2) = decrypt_str_or_original(&config.enc_id, PASSWORD_ENC_VERSION);
